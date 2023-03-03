@@ -7,6 +7,8 @@ export const router = Router()
 // router.get('/', NewsController.getNews)
 router.get('/:search', NewsController.getNews)
 
+router.get('/hotnews', NewsController.getHotNews)
+
 // router.get('/users', UserController.findAll)
 // router.get('/users/:userId', UserController.findOne)
 // router.post('/users', UserController.create)

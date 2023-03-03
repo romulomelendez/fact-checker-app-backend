@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import puppeteer from 'puppeteer'
 import axios from 'axios'
 
 import { sendNews } from '../utils'
@@ -14,6 +15,22 @@ class NewsController {
             const news = await sendNews(rawDataNews.data.claims)
 
             res.status(200).json(news)
+        }
+        catch (err: any) {
+            console.error(err.message)
+            res.status(404).json(err)
+        }
+
+    }
+
+    async getHotNews(req: Request, res: Response) {
+
+        
+        
+        try {
+            
+
+            res.status(200).json()
         }
         catch (err: any) {
             console.error(err.message)

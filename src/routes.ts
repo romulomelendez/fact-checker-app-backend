@@ -5,7 +5,7 @@ import NewsController from './controllers/NewsController'
 export const router = Router()
 
 // router.get('/', NewsController.getNews)
-router.get('/:search', NewsController.getNews)
+router.get('/search/:search', NewsController.getNews)
 
 router.get('/hotnews', NewsController.getHotNews)
 

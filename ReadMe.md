@@ -4,4 +4,4 @@
 
 - [Install Docker in your machine](https://www.docker.com/get-started/)
 
-- run ```docker compose up```
+- run ```docker-compose up```

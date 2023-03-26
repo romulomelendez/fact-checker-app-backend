@@ -1,4 +1,4 @@
-import { NewsProps } from "./types"
+import { NewsProps, ArticleProps, ArticlesProps } from "./types"
 
 export const buildNewsOjbect = async (news: object[] | undefined) => {
 
@@ -51,15 +51,15 @@ export const buildNewsOjbect = async (news: object[] | undefined) => {
 
 }
 
-export const buildTopHeadlinesNewsOjbect = async (articles: any) => {
+export const buildTopHeadlinesNewsOjbect = async (articles: ArticlesProps[]) => {
 
     try {
             
-        let topHeadlinesArray: object[] = []
+        let topHeadlinesArray: ArticleProps[] = []
 
-        articles.map((article: any) => {
+        articles.map((article) => {
 
-            let topNewsObj: any = {
+            let topNewsObj = {
                 "author": article.author,
                 "title": article.title,
                 "topNewsUrl": article.url,

@@ -3,6 +3,8 @@ import { Request, Response } from 'express'
 
 import { buildNewsOjbect, buildTopHeadlinesNewsOjbect } from '../utils'
 
+import { rawTopNewsProps } from '../utils/types'
+
 class NewsController {
 
     async getNews(req: Request, res: Response) {
@@ -25,9 +27,8 @@ class NewsController {
     async getHotNews(req: Request, res: Response) {
 
         try {
-            const rawDataTopNews: any = await axios.get(process.env.BASE_API_URL_TOP_HEADLINES as string + process.env.API_KEY_TOP_HEADLINES)
+            const rawDataTopNews: rawTopNewsProps = await axios.get(process.env.BASE_API_URL_TOP_HEADLINES as string + process.env.API_KEY_TOP_HEADLINES)
             const topNews = await buildTopHeadlinesNewsOjbect(rawDataTopNews.data.articles)
-
             res.status(200).json(topNews)
         }
         catch (err: any) {

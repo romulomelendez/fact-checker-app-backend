@@ -13,7 +13,7 @@ export const buildNewsOjbect = async (news: object[] | undefined) => {
 
                     "originalTitle": item.text,
                     "originalClaimant": item.claimant,
-                    "originalClaimDate": item.claimDate   
+                    "originalClaimDate": handleTimeStamp(item.claimDate)   
     
                 }
             }
@@ -25,7 +25,7 @@ export const buildNewsOjbect = async (news: object[] | undefined) => {
 
                     "publisherName": review.publisher.name,
                     "publisherSite": review.publisher.site,
-                    "reviewDate": review.reviewDate,
+                    "reviewDate": handleTimeStamp(review.reviewDate),
                     "textualRating": review.textualRating,
                     "title": review.title,
                     "urlNews": review.url,
@@ -63,7 +63,7 @@ export const buildTopHeadlinesNewsOjbect = async (articles: ArticlesProps[]) => 
                 "author": article.author,
                 "title": article.title,
                 "topNewsUrl": article.url,
-                "publishedAt": article.publishedAt
+                "publishedAt": handleTimeStamp(article.publishedAt)
             }
 
             topHeadlinesArray.push(topNewsObj)
@@ -76,5 +76,20 @@ export const buildTopHeadlinesNewsOjbect = async (articles: ArticlesProps[]) => 
         console.error(err)
         return
     }
+
+}
+
+const createNewDateFormat = ( date: Date ): string => {
+
+    return date.getUTCDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
+
+}
+
+export const handleTimeStamp = (timestamp: string): string => {
+
+    if( timestamp === undefined )
+        return ''
+
+    return createNewDateFormat(new Date(timestamp))
 
 }
